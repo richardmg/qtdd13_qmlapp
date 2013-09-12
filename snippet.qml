@@ -1,33 +1,16 @@
-import QtQuick 2.1
-import QtQuick.Window 2.0
-import QtSensors 5.1
-
-Rectangle {
-    id: mainWindow
-    color: "white"
-
-    Accelerometer {
-        id: sensor
-        active: true
-    }
-
     Image {
         id: img
         source: "qrc:/qt.png"
-        x: Math.random() * (mainWindow.width - width)
-        y: Math.random() * (mainWindow.height - height)
-        width: 200
-        height: 200
-        rotation: mainWindow.Screen.orientation === Qt.PortraitOrientation ? 0 : -90
-        Behavior on rotation { NumberAnimation { duration: 1000; easing.type: Easing.OutBounce } }
+        x: Math.random() * mainWindow.width
+        y: Math.random() * mainWindow.height
 
         property real speedX: 0
         property real speedY: 0
         property real friction: 0.05
         property real bounce: 0.6
         property real gravity: 0.2
-
         property bool active: false
+
         MouseArea {
             anchors.fill: parent
             onClicked: img.active = true
@@ -67,4 +50,3 @@ Rectangle {
             }
         }
     }
-}
