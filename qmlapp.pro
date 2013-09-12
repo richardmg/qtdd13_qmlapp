@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = SensorApp
+TARGET = QmlApp
 INCLUDEPATH += .
 QT += qml quick sensors
 QTPLUGIN += qtsensors_ios

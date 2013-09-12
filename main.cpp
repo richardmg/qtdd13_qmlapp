@@ -1,5 +1,3 @@
-
-
 #include <QtQuick>
 
 Q_IMPORT_PLUGIN(QtQuick2Plugin)
