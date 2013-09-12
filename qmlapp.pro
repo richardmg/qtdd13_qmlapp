@@ -9,17 +9,21 @@ QT += qml quick sensors
 QTPLUGIN += qtsensors_ios
 CONFIG += release
 
-# WIP
-qmldir.files = $$(QTDIR)/qml
-#qmldir.path = qml
-QMAKE_BUNDLE_DATA += qmldir
-
-QTDIR = $$(QTDIR)
-LIBS += -L$$QTDIR/qml/QtQuick.2 -lqtquick2plugin
-LIBS += -L$$QTDIR/qml/QtSensors -ldeclarative_sensors
-LIBS += -Wl,-force_load,$$QTDIR/lib/libQt5Quick.a
+QMAKE_INFO_PLIST = Info.Plist
 
 # Input
 SOURCES += main.cpp
 RESOURCES += main.qrc
-OTHER_FILES += main.qml ball.jpeg Accelerometer.qml Gyroscope.qml
+OTHER_FILES += main.qml ball.jpeg Accelerometer.qml Gyroscope.qml \
+    QtImage.qml
+
+
+# Bundle in Qt import:
+qmldir.files = $$(QTDIR)/qml
+QMAKE_BUNDLE_DATA += qmldir
+
+# Link to import plugins:
+QTDIR = $$(QTDIR)
+LIBS += -L$$QTDIR/qml/QtQuick.2 -lqtquick2plugin
+LIBS += -L$$QTDIR/qml/QtSensors -ldeclarative_sensors
+LIBS += -Wl,-force_load,$$QTDIR/lib/libQt5Quick.a
