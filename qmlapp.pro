@@ -14,7 +14,8 @@ QMAKE_INFO_PLIST = Info.Plist
 # Input
 SOURCES += main.cpp
 RESOURCES += main.qrc
-OTHER_FILES += main.qml Accelerometer.qml Snippet.qml
+OTHER_FILES += main.qml Accelerometer.qml Snippet.qml \
+    QtImage.qml
 
 
 # Bundle in Qt import:
