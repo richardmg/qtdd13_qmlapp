@@ -14,7 +14,7 @@ QMAKE_INFO_PLIST = Info.Plist
 # Input
 SOURCES += main.cpp
 RESOURCES += main.qrc
-OTHER_FILES += main.qml Accelerometer.qml Snippet.qml
+OTHER_FILES += main.qml Accelerometer.qml Snippet.qml dd13.qml
 
 
 # Bundle in Qt import:
@@ -27,3 +27,5 @@ LIBS += -L$$QTDIR/qml/QtQuick.2 -lqtquick2plugin
 LIBS += -L$$QTDIR/qml/QtSensors -ldeclarative_sensors
 LIBS += -L$$QTDIR/qml/QtQuick/Window.2 -lwindowplugin
 LIBS += -Wl,-force_load,$$QTDIR/lib/libQt5Quick.a
+
+cache()

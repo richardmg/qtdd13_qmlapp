@@ -1,52 +1,75 @@
-    Image {
-        id: img
-        source: "qrc:/qt.png"
-        x: Math.random() * mainWindow.width
-        y: Math.random() * mainWindow.height
+property real speedX: 0
+property real speedY: 0
+property real friction: 0.05
+property real bounce: 0.6
+property real gravity: 0.2
 
-        property real speedX: 0
-        property real speedY: 0
-        property real friction: 0.05
-        property real bounce: 0.6
-        property real gravity: 0.2
-        property bool active: false
+function move(readingX, readingY)
+{
+    // adjust icon speed:
+    speedX -= readingX * gravity;
+    speedY += readingY * gravity
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: img.active = true
-        }
+    // Calculate where the icon should be:
+    x += (speedX > 0) ? Math.max(0, speedX - friction) : Math.min(0, speedX + friction);
+    y += (speedY > 0) ? Math.max(0, speedY - friction) : Math.min(0, speedY + friction)
 
-        Connections {
-            target: sensor
-
-            onReadingChanged: {
-                if (!img.active)
-                    return;
-
-                // adjust icon speed:
-                img.speedX -= sensor.reading.x * img.gravity;
-                img.speedY += sensor.reading.y * img.gravity
-
-                // Calculate where the icon should be:
-                img.x += (img.speedX > 0) ? Math.max(0, img.speedX - img.friction) : Math.min(0, img.speedX + img.friction);
-                img.y += (img.speedY > 0) ? Math.max(0, img.speedY - img.friction) : Math.min(0, img.speedY + img.friction)
-
-                // Bounce icon back in if outside screen:
-                if (img.x < 0) {
-                    img.x = 0
-                    img.speedX = img.speedX * -1 * img.bounce
-                } else  if (img.x > mainWindow.width - img.paintedWidth) {
-                    img.x = mainWindow.width - img.paintedWidth
-                    img.speedX = img.speedX * -1 * img.bounce
-                }
-                if (img.y < 0) {
-                    img.y = 0
-                    img.speedY = img.speedY * -1 * img.bounce
-                }
-                if (img.y > mainWindow.height - img.paintedHeight) {
-                    img.y = mainWindow.height - img.paintedHeight
-                    img.speedY = img.speedY * -1 * img.bounce
-                }
-            }
-        }
+    // Bounce icon back in if outside screen:
+    if (x < 0) {
+        x = 0
+        speedX = speedX * -1 * bounce
+    } else  if (x > mainWindow.width - paintedWidth) {
+        x = mainWindow.width - paintedWidth
+        speedX = speedX * -1 * bounce
     }
+    if (y < 0) {
+        y = 0
+        speedY = speedY * -1 * bounce
+    }
+    if (y > mainWindow.height - paintedHeight) {
+        y = mainWindow.height - paintedHeight
+        speedY = speedY * -1 * bounce
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+qmlRegisterType<IOSCamera>("IOSCamera", 1, 0, "IOSCamera");
+
+
+#include <UIKit/UIKit.h>
+#include <QtGui/5.2.0/QtGui/qpa/qplatformnativeinterface.h>
+#include <QtGui>
+#include <QtQuick>
+#include "IOSCamera.h"
+
+IOSCamera::IOSCamera(QQuickItem *parent) :
+    QQuickItem(parent)
+{
+}
+
+void IOSCamera::open()
+{
+    UIView *view = static_cast<UIView *>(
+                QGuiApplication::platformNativeInterface()->
+                nativeResourceForWindow("uiview", window()));
+
+    UIViewController *qtController = [[view window] rootViewController];
+
+    UIImagePickerController *imagePickerController =
+            [[UIImagePickerController alloc] init];
+    [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+
+    [qtController presentViewController:imagePickerController
+                                        animated:YES completion:nil];
+}
