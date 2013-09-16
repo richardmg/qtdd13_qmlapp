@@ -9,12 +9,12 @@ QT += qml quick sensors
 QTPLUGIN += qtsensors_ios
 CONFIG += release
 
-QMAKE_INFO_PLIST = Info.Plist
+#QMAKE_INFO_PLIST = Info.Plist
 
 # Input
 SOURCES += main.cpp
 RESOURCES += main.qrc
-OTHER_FILES += main.qml Accelerometer.qml Snippet.qml
+OTHER_FILES += main.qml Accelerometer.qml Snippet.qml dd13.qml
 
 
 # Bundle in Qt import:
