@@ -9,7 +9,7 @@ QT += qml quick sensors
 QTPLUGIN += qtsensors_ios
 CONFIG += release
 
-#QMAKE_INFO_PLIST = Info.Plist
+QMAKE_INFO_PLIST = Info.Plist
 
 # Input
 SOURCES += main.cpp
