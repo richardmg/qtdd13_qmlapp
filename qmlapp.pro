@@ -9,8 +9,6 @@ QT += qml quick sensors
 QTPLUGIN += qtsensors_ios
 CONFIG += release
 
-QMAKE_INFO_PLIST = Info.Plist
-
 # Input
 SOURCES += main.cpp
 RESOURCES += main.qrc
@@ -28,10 +26,8 @@ LIBS += -L$$QTDIR/qml/QtSensors -ldeclarative_sensors
 LIBS += -L$$QTDIR/qml/QtQuick/Window.2 -lwindowplugin
 LIBS += -Wl,-force_load,$$QTDIR/lib/libQt5Quick.a
 
-HEADERS += \
-    ioscamera.h
+HEADERS +=
 
-OBJECTIVE_SOURCES += \
-    ioscamera.mm
+OBJECTIVE_SOURCES +=
 
 cache()
