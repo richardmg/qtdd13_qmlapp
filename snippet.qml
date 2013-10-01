@@ -57,7 +57,6 @@ void IOSCamera::open()
     // Create a new image picker controller to show on top of Qt's view controller:
     UIImagePickerController *imageController = [[[UIImagePickerController alloc] init] autorelease];
     [imageController setSourceType:UIImagePickerControllerSourceTypeCamera];
-    [imageController setDelegate:id(m_delegate)];
 
     // Tell the imagecontroller to animate on top:
     [qtController presentViewController:imageController animated:YES completion:nil];
