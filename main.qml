@@ -5,4 +5,8 @@ import QtSensors 5.1
 Rectangle {
     id: mainWindow
     color: "white"
+
+    Image {
+        source: "qt.png"
+    }
 }
