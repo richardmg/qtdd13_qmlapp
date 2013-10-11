@@ -8,6 +8,7 @@ INCLUDEPATH += .
 QT += qml quick sensors
 QTPLUGIN += qtsensors_ios
 CONFIG += release
+QMAKE_INFO_PLIST = Info.plist
 
 # Input
 SOURCES += main.cpp
