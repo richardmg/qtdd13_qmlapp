@@ -67,10 +67,5 @@ Rectangle {
 
     IOSCamera {
         id: camera
-        onImagePathChanged: {
-            img.source = imagePath
-            img.width /= 4
-            img.height /= 4
-        }
     }
 }
