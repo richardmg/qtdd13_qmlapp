@@ -12,7 +12,7 @@ CONFIG += release
 # Input
 SOURCES += main.cpp
 RESOURCES += main.qrc
-OTHER_FILES += main.qml Accelerometer.qml Snippet.qml
+OTHER_FILES += main.qml Snippet.qml
 
 
 cache()
