@@ -4,11 +4,11 @@ property real friction: 0.05
 property real bounce: 0.6
 property real gravity: 0.2
 
-function move(readingX, readingY)
+function move()
 {
     // adjust icon speed:
-    speedX -= readingX * gravity;
-    speedY += readingY * gravity
+    speedX -= sensor.reading.x * gravity;
+    speedY += sensor.reading.y * gravity
 
     // Calculate where the icon should be:
     x += (speedX > 0) ? Math.max(0, speedX - friction) : Math.min(0, speedX + friction);
