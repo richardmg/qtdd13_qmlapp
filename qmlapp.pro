@@ -8,6 +8,8 @@ INCLUDEPATH += .
 QT += qml quick sensors
 QTPLUGIN += qtsensors_ios
 
+QMAKE_INFO_PLIST = Info.plist
+
 # Input
 SOURCES += main.cpp
 RESOURCES += main.qrc
@@ -16,3 +18,9 @@ OTHER_FILES += qml.snippet camera.snippet camera.snippet2
 
 
 cache()
+
+HEADERS += \
+    ioscamera.h
+
+OBJECTIVE_SOURCES += \
+    ioscamera.mm
