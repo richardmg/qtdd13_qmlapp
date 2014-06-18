@@ -1,5 +1,5 @@
 #include <UIKit/UIKit.h>
-#include <QtGui/5.2.0/QtGui/qpa/qplatformnativeinterface.h>
+#include <QtGui/qpa/qplatformnativeinterface.h>
 #include <QtGui>
 #include <QtQuick>
 #include "IOSCamera.h"

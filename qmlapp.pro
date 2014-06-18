@@ -5,7 +5,7 @@
 TEMPLATE = app
 TARGET = QmlApp
 INCLUDEPATH += .
-QT += qml sensors
+QT += quick sensors gui_private
 
 QMAKE_INFO_PLIST = Info.plist
 
