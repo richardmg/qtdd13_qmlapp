@@ -11,7 +11,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>digia.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>qt.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
