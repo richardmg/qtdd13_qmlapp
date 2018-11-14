@@ -9,14 +9,8 @@ QT += quick sensors gui_private
 
 QMAKE_INFO_PLIST = Info.plist
 
-# Input
 SOURCES += main.cpp
-RESOURCES += main.qrc
-OTHER_FILES += main.qml
-OTHER_FILES += qml.snippet camera.snippet camera.snippet2
-
-
-cache()
+RESOURCES += main.qml qt.png
 
 HEADERS += \
     ioscamera.h
