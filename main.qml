@@ -10,14 +10,23 @@ Window {
     IOSCamera {
         id: camera
         onImagePathChanged: {
+            // The captured image has changed. But since the path stays the
+            // same if you take several snapshots, we clear the source first
+            // to force a reload.
+            img.source = ""
             img.source = imagePath
-            img.width = img.sourceSize.width / 4
-            img.height = img.sourceSize.height / 4
         }
+    }
+
+    Accelerometer {
+        id: sensor
+        active: Qt.application.state === Qt.ApplicationActive
     }
 
     Image {
         id: img
+        width: 200
+        height: 200
         source: "qt.png"
         rotation: Screen.orientation === Qt.PortraitOrientation ? 0 : -90
         Behavior on rotation {
@@ -43,7 +52,7 @@ Window {
 
         onTickChanged:
         {
-            // adjust icon speed:
+            // Adjust icon speed:
             speedX -= sensor.reading.x * gravity;
             speedY += sensor.reading.y * gravity
 
@@ -59,20 +68,17 @@ Window {
                 x = mainWindow.width - paintedWidth
                 speedX = speedX * -1 * bounce
             }
+
             if (y < 0) {
                 y = 0
                 speedY = speedY * -1 * bounce
             }
+
             if (y > mainWindow.height - paintedHeight) {
                 y = mainWindow.height - paintedHeight
                 speedY = speedY * -1 * bounce
             }
         }
 
-    }
-
-    Accelerometer {
-        id: sensor
-        active: Qt.application.state === Qt.ApplicationActive
     }
 }

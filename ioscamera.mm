@@ -1,8 +1,10 @@
 #include <UIKit/UIKit.h>
+
 #include <QtGui/qpa/qplatformnativeinterface.h>
 #include <QtGui>
 #include <QtQuick>
-#include "IOSCamera.h"
+
+#include "ioscamera.h"
 
 @interface CameraDelegate : NSObject <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     IOSCamera *m_iosCamera;
